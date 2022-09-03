@@ -39,3 +39,17 @@ for(let i=0; i<romanStr.length; i++){
 return num;
 }
 console.log(romanToInteger('III'))
+
+//14. Longest Common Prefix
+const longestCommponPrefix = (strs) => {
+    let Prefix = " ";
+    if(strs === null || strs.length === 0) return Prefix;
+    for(let i=0; i<strs[0].length; i++){
+        if(!strs.every((string) => string[i] === strs[0][i])){
+            return strs[0].slice(0, i);
+        }
+
+    }
+    return strs[0];
+};
+console.log(longestCommponPrefix(["flower","flow","flight"]))

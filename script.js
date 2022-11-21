@@ -119,3 +119,16 @@ var removeDuplicates = function (nums) {
   return i;
 };
 console.log(removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]))
+
+
+
+
+//27. Remove Element
+var removeElement = function(nums, val) {
+  var len = nums.length;
+  var count = 0;
+  for (var i = 0; i < len; i++) {
+    if (nums[i] !== val) nums[count++] = nums[i];
+  }
+  return count;
+};

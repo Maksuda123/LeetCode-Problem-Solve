@@ -182,3 +182,26 @@ var searchInsert = function (nums, target) {
   }
   return nums.length;
 };
+
+
+
+
+
+
+//58. Length of Last Word
+var lengthOfLastWord = function (s) {
+  const words = s.trim().split(" ");
+  return words.length > 0 ? words[words.length - 1].length : 0;
+};
+
+
+//or
+var lengthOfLastWord = function (s) {
+  const wordArray = s.trim().split(/(\s+)/);
+  const last = wordArray.length - 1;
+  if (wordArray[last] === "") {
+    return 0;
+  } else {
+    return wordArray[last].length;
+  }
+};

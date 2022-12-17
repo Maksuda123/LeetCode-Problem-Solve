@@ -239,3 +239,59 @@ const plusOne = (digits) => {
     console.log(plusOne([1,2,3]));
     
   
+
+
+
+//67. Add Binary
+var addBinary = function (a, b) {
+  /**
+   * 1. Turn each string into array
+   * 2. Reverse each string
+   * 3. starting with 0 index check if value exist, then use similar to plus one pattern
+   * 4. if one of the values doesn't exist copy what's left of remaining array
+   * 5. reverse resulting array and merge into string
+   **/
+  let result = a.split("").reverse();
+  let plus = b.split("").reverse();
+
+ 
+  for (let i = 0, j = 0; i <= result.length-1 || j<=plus.length-1 || r > 0; i++, j++) {
+      let sum = (parseInt(result[i])||0) + (parseInt(plus[j])||0) + r
+      if (sum>1) {
+          result[i]=sum%2
+          r = 1;
+      } else {
+          result[i]=sum;
+          r=0;
+      }
+      
+  }
+  
+  return result.reverse().join("")
+
+};
+
+
+
+//or
+var addBinary = function(a, b) {
+  var len1 = a.length;
+  var len2 = b.length;
+  var max = Math.max(len1, len2);
+  var res = '';
+  var carry = 0;
+  var val = 0;
+
+  for (var i = 0; i < max; i++) {
+    val = Number(a[len1 - 1 - i] || 0) + Number(b[len2 - 1 - i] || 0) + carry;
+    carry = Math.floor(val / 2);
+    res = (val % 2) + res;
+  }
+
+  if (carry) res = 1 + res;
+
+  return res;
+};
+
+
+    

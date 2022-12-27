@@ -1,15 +1,15 @@
 //1. Two Sum
 const twoSum = (nums, target) => {
-  let result = {}
+  let result = {};
   let len = nums.length;
   for (let i = 0; i < len; i++) {
     if (nums[i] in result) {
       return [result[nums[i]], i];
     }
-    result[target - nums[i]] = i
+    result[target - nums[i]] = i;
   }
-  return [-1, -1]
-}
+  return [-1, -1];
+};
 console.log(twoSum([2, 7, 11, 15], 9));
 
 //9. Palindrome Number
@@ -18,12 +18,12 @@ const palindromeNumber = (x) => {
   let num = x;
   let res = 0;
   while (num !== 0) {
-    res = (res * 10) + (num % 10);
+    res = res * 10 + (num % 10);
     num = Math.floor(num / 10);
   }
   return res === x;
-}
-console.log(palindromeNumber(121))
+};
+console.log(palindromeNumber(121));
 
 //13. Roman to Integer
 const romanToInteger = (romanStr) => {
@@ -37,8 +37,8 @@ const romanToInteger = (romanStr) => {
     }
   }
   return num;
-}
-console.log(romanToInteger('III'))
+};
+console.log(romanToInteger("III"));
 
 //14. Longest Common Prefix
 const longestCommponPrefix = (strs) => {
@@ -48,21 +48,19 @@ const longestCommponPrefix = (strs) => {
     if (!strs.every((string) => string[i] === strs[0][i])) {
       return strs[0].slice(0, i);
     }
-
   }
   return strs[0];
 };
-console.log(longestCommponPrefix(["flower", "flow", "flight"]))
-
+console.log(longestCommponPrefix(["flower", "flow", "flight"]));
 
 // 20. Valid Parentheses
 const isValid = (s) => {
   var stack = [];
   var len = s.length;
   var map = {
-    '(': ')',
-    '[': ']',
-    '{': '}'
+    "(": ")",
+    "[": "]",
+    "{": "}",
   };
   for (let i = 0; i < len; i++) {
     if (stack.length > 0 && map[stack[stack.length - 1]] === s[i]) {
@@ -73,10 +71,7 @@ const isValid = (s) => {
   }
   return stack.length === 0;
 };
-console.log(isValid("()[]{}"))
-
-
-
+console.log(isValid("()[]{}"));
 
 //   21. Merge Two Sorted Lists
 var mergeTwoLists = function (l1, l2) {
@@ -97,8 +92,6 @@ var mergeTwoLists = function (l1, l2) {
   return head.next;
 };
 
-
-
 // 26. Remove Duplicates from Sorted Array
 var removeDuplicates = function (nums) {
   const length = nums.length;
@@ -118,13 +111,10 @@ var removeDuplicates = function (nums) {
 
   return i;
 };
-console.log(removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]))
-
-
-
+console.log(removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]));
 
 //27. Remove Element
-var removeElement = function(nums, val) {
+var removeElement = function (nums, val) {
   var len = nums.length;
   var count = 0;
   for (var i = 0; i < len; i++) {
@@ -132,9 +122,6 @@ var removeElement = function(nums, val) {
   }
   return count;
 };
-
-
-
 
 //28. Implement strStr()
 var strStr = function (haystack, needle) {
@@ -146,35 +133,32 @@ var strStr = function (haystack, needle) {
     if (needle === haystack.substring(i, i + needle.length)) {
       return i;
     }
-  } 
+  }
   return -1;
 };
-
 
 //35. Search Insert Position
 //Using Binary Search
 var searchInsert = function (nums, target) {
   let left = 0;
-    let right = nums.length;
+  let right = nums.length;
 
-    while (left < right) {
-        const middle = Math.floor((left + right) / 2);
+  while (left < right) {
+    const middle = Math.floor((left + right) / 2);
 
-        if (nums[middle] < target) {
-            left = middle + 1;
-        } else {
-            right = middle;
-        }
+    if (nums[middle] < target) {
+      left = middle + 1;
+    } else {
+      right = middle;
     }
+  }
 
-    return left;
+  return left;
 };
-console.log(searchInsert([1,3,5,6], 7));
-
+console.log(searchInsert([1, 3, 5, 6], 7));
 
 //Or
 var searchInsert = function (nums, target) {
-
   for (let index = 0; index < nums.length; index++) {
     if (target <= nums[index]) {
       return index;
@@ -183,17 +167,11 @@ var searchInsert = function (nums, target) {
   return nums.length;
 };
 
-
-
-
-
-
 //58. Length of Last Word
 var lengthOfLastWord = function (s) {
   const words = s.trim().split(" ");
   return words.length > 0 ? words[words.length - 1].length : 0;
 };
-
 
 //or
 var lengthOfLastWord = function (s) {
@@ -206,41 +184,35 @@ var lengthOfLastWord = function (s) {
   }
 };
 
-
-
 //66. Plus One
 const plusOne = (digits) => {
-  for(let i = digits.length-1; i>=0; i--){
-    if(digits[i] < 9){
+  for (let i = digits.length - 1; i >= 0; i--) {
+    if (digits[i] < 9) {
       digits[i] = digits[i] + 1;
       return digits;
-    }else{
+    } else {
       digits[i] = 0;
     }
   }
   digits.unshift(1);
   return digits;
+};
+console.log(plusOne([1, 2, 3]));
+
+//or
+const plusOne = (digits) => {
+  for (let i = digits.length - 1; i >= 0; i--) {
+    if (digits[i] === 9) {
+      digits[i] = 0;
+    } else {
+      digits[i]++;
+      return digits;
+    }
   }
-  console.log(plusOne([1,2,3]))
-
-  //or
-  const plusOne = (digits) => {
-    for(let i = digits.length-1; i>=0; i--){
-      if(digits[i] === 9){
-        digits[i] = 0;
-      }else{
-        digits[i]++
-        return digits;
-      }
-    }
-    digits.unshift(1);
-    return digits;
-    }
-    console.log(plusOne([1,2,3]));
-    
-  
-
-
+  digits.unshift(1);
+  return digits;
+};
+console.log(plusOne([1, 2, 3]));
 
 //67. Add Binary
 var addBinary = function (a, b) {
@@ -254,31 +226,30 @@ var addBinary = function (a, b) {
   let result = a.split("").reverse();
   let plus = b.split("").reverse();
 
- 
-  for (let i = 0, j = 0; i <= result.length-1 || j<=plus.length-1 || r > 0; i++, j++) {
-      let sum = (parseInt(result[i])||0) + (parseInt(plus[j])||0) + r
-      if (sum>1) {
-          result[i]=sum%2
-          r = 1;
-      } else {
-          result[i]=sum;
-          r=0;
-      }
-      
+  for (
+    let i = 0, j = 0;
+    i <= result.length - 1 || j <= plus.length - 1 || r > 0;
+    i++, j++
+  ) {
+    let sum = (parseInt(result[i]) || 0) + (parseInt(plus[j]) || 0) + r;
+    if (sum > 1) {
+      result[i] = sum % 2;
+      r = 1;
+    } else {
+      result[i] = sum;
+      r = 0;
+    }
   }
-  
-  return result.reverse().join("")
 
+  return result.reverse().join("");
 };
 
-
-
 //or
-var addBinary = function(a, b) {
+var addBinary = function (a, b) {
   var len1 = a.length;
   var len2 = b.length;
   var max = Math.max(len1, len2);
-  var res = '';
+  var res = "";
   var carry = 0;
   var val = 0;
 
@@ -293,5 +264,45 @@ var addBinary = function(a, b) {
   return res;
 };
 
+//69. Sqrt(x)
+var mySqrt = function (x) {
+  return Math.sqrt(x);
+};
 
-    
+//or
+var mySqrt = function (x) {
+  let left = 1;
+  let right = x;
+  // The square root of 0 or 1 is itself
+  if (x < 2) return x;
+
+  // Use binary search to find the square root or the whole number closest to the square root
+  while (left < right) {
+    // Find the mid point between left and right
+    const mid = Math.floor((left + right) / 2);
+    // Return the mid point if this is the square root
+    if (mid * mid === x) return mid;
+    // If mid squared is greater than x then the answer must be on the left half of mid
+    else if (mid * mid > x) right = mid;
+    // If mid squred is less than x then the answer must be on the right half of mid
+    else left = mid + 1;
+  }
+  return left - 1;
+};
+
+//or
+var mySqrt = function (x) {
+  let start = 0;
+  let end = x;
+  let mid = 0;
+  while (start <= end) {
+    mid = Math.floor((start + end) / 2);
+    if (mid * mid === x) return mid;
+    else if (mid * mid > x) {
+      end = mid - 1;
+    } else if (mid * mid < x) {
+      start = mid + 1;
+    }
+  }
+  return mid * mid > x ? mid - 1 : mid;
+};

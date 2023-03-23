@@ -309,33 +309,33 @@ var mySqrt = function (x) {
 
 
 
-
-70. Climbing Stairs
+//70. Climbing Stairs
 const cache = {
-    "0": 1,
-    "1": 1,
-  };
-  
-  const climbStairs = function (n) {
-    //base cases
-    if (n <= 1) return 1;
-    for (let i = 2; i <= n; i++) {
-      cache[i] = cache[i - 1] + cache[i - 2];
-    }
-    return cache[n];
-  };
+  0: 1,
+  1: 1,
+};
+
+const climbStairs = function (n) {
+  //base cases
+  if (n <= 1) return 1;
+  for (let i = 2; i <= n; i++) {
+    cache[i] = cache[i - 1] + cache[i - 2];
+  }
+  return cache[n];
+};
+
 
 //or
-var climbStairs = function(n) {
-    let steps = [1 ,1];
-    for (let i = 2; i < n + 1; i++) {
-        steps.push(steps[i - 1] + steps[i -2]);
-    }
-    return steps[n];
-}
+var climbStairs = function (n) {
+  let steps = [1, 1];
+  for (let i = 2; i < n + 1; i++) {
+    steps.push(steps[i - 1] + steps[i - 2]);
+  }
+  return steps[n];
+};
 
-//or
-var climbStairs = function(n) {
+
+var climbStairs = function (n) {
   var dp = [0, 1];
   for (var i = 0; i < n; i++) {
     dp = [dp[1], dp[0] + dp[1]];
@@ -345,16 +345,14 @@ var climbStairs = function(n) {
 
 
 //83. Remove Duplicates from Sorted List
-const deleteDuplicates = function(head) {
-  let curr=head;
-  while(curr && curr.next){
-      
-      if(curr.val===curr.next.val){
-          curr.next=curr.next.next;
-      }
-      else{
-          curr=curr.next;
-      }
+const deleteDuplicates = function (head) {
+  let curr = head;
+  while (curr && curr.next) {
+    if (curr.val === curr.next.val) {
+      curr.next = curr.next.next;
+    } else {
+      curr = curr.next;
+    }
   }
-return head;
+  return head;
 };

@@ -358,3 +358,37 @@ const deleteDuplicates = function (head) {
   }
   return head;
 };
+
+
+
+// 88. Merge Sorted Array
+const merge = function (nums1, m, nums2, n) {
+  let first = m - 1;
+  let second = n - 1;
+  let i = m + n - 1;
+  while (second >= 0) {
+    let fVal = nums1[first];
+    let sVal = nums2[second];
+
+    if (fVal > sVal) {
+      nums1[i] = fVal;
+      i--;
+      first--;
+    } else {
+      nums1[i] = sVal;
+      i--;
+      second--;
+    }
+  }
+};
+
+
+//or
+const merge = function (nums1, m, nums2, n) {
+  var i = m - 1;
+  var j = n - 1;
+  var k = m + n - 1;
+  while (j >= 0) {
+    nums1[k--] = i >= 0 && nums1[i] > nums2[j] ? nums1[i--] : nums2[j--];
+  }
+};

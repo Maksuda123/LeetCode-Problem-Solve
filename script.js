@@ -392,3 +392,39 @@ const merge = function (nums1, m, nums2, n) {
     nums1[k--] = i >= 0 && nums1[i] > nums2[j] ? nums1[i--] : nums2[j--];
   }
 };
+
+
+
+// 94. Binary Tree Inorder Traversal
+var inorderTraversal = function(root) {
+  var res = [];
+  helper(root, res);
+  return res;
+};
+
+var helper = function (root, res) {
+  if (!root) return;
+  if (root.left) helper(root.left, res);
+  res.push(root.val);
+  if (root.right) helper(root.right, res);
+};
+
+
+//or
+var inorderTraversal = function(root) {
+  let stack = [];
+  let res = [];
+  
+  while(root !== null || stack.length !== 0) {
+      while(root !== null) {
+          stack.push(root);
+          root = root.left;
+      }
+      root = stack.pop();
+      res.push(ro ot.val);
+      root = root.right;
+  }
+  return res;
+}
+
+
